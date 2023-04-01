@@ -1,0 +1,77 @@
+<section class="header">
+  <div class="header_logo gap-2">
+    <i class="fa-solid fa-bars mx-3 menu" onclick="toggleSidebar()"></i>
+
+    <a href="/homepage.html">
+      <img src="/images/lightlogo.png" alt="logo" />
+    </a>
+
+    <form action="#" class="headerForm mx-1">
+      <input type="date" name="from" class="headerDate" />
+      <label for="to" class="mx-1">To </label>
+      <input type="date" name="to" class="headerDate" />
+      <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+    </form>
+  </div>
+  <div class="header_content">
+    <div class="rightNav d-flex flex-column" id="rightNav">
+      <div class="d-flex align-items-center innerContent">
+        <label class="switch m-0">
+          <input
+            type="checkbox"
+            id="dark-mode-toggle"
+            class="dark-mode-toggle"
+            title="Mode"
+          />
+          <span class="switchSlider"></span>
+        </label>
+
+        <!-- <button
+          id="dark-mode-toggle"
+          class="dark-mode-toggle"
+          title="Mode"
+        ></button> -->
+        <button
+          title="Account"
+          class="account d-flex align-items-center gap-2"
+          onclick="showLogout()"
+        >
+          Hello, Username
+          <i class="fa-regular fa-circle-user mx-2"></i>
+          <div class="logout"><a href="#">Logout</a></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function showLogout() {
+    $(".logout").toggleClass("active");
+  }
+
+  function showSideNav() {
+    $(".rightNav").toggleClass("active");
+  }
+
+  function showDashboard2() {
+    $("#dashboard2").toggleClass("active");
+  }
+
+  // function showNavFilter() {
+  //   $(".navFilter").toggleClass("active");
+  // }
+</script>
+<script>
+  $(window)
+    .resize(function () {
+      var width = $(window).width();
+      var mobileScreen = 450;
+
+      if (width <= mobileScreen) {
+        $(".admin").hide();
+      }
+    })
+    .resize();
+</script>
+<script src="../nstatic/js/themeToggle.js"></script>

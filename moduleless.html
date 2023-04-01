@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Widgetor - Moduleless</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="nstatic/css/variable.css" />
+    <link rel="stylesheet" href="nstatic/css/style.css" />
+
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/0c4a005ebc.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.3.2.min.css"
+    rel=”stylesheet” type=”text/css”> <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.3.2.min.css"
+    rel=”stylesheet” type=”text/css”>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="mainSection">
+      <header id="header"></header>
+      <div class="mainContent">
+        <div id="sidebar"></div>
+        <div class="w-100">
+          <div
+            class="w-100 d-flex align-content-center px-5 py-3"
+            style="background-color: #566fc9; color: #fff"
+          >
+            <i
+              class="fa-solid fa-circle-arrow-left px-2"
+              onclick="history.go(-1)"
+            ></i>
+            <h4>Module Less</h4>
+          </div>
+
+          <section class="detailed w-100vw h-100">
+            <button id="filterBtn" class="filterBtn" onclick="showFilter()">
+              Filters
+            </button>
+            <button class="filterBtn" onclick="showSnapshot()">Snapshot</button>
+            <i
+              class="fa-solid fa-rectangle-xmark close_snapshot"
+              id="close_snapshot"
+              onclick="showSnapshot()"
+            ></i>
+            <i
+              class="fa-solid fa-rectangle-xmark close"
+              id="close"
+              onclick="showFilter()"
+            ></i>
+            <div class="detailed_container">
+              <form action="#">
+                <div id="left_side" class="left_side anim">
+                  <div class="top_filter">
+                    <div class="filter_div sort_list">
+                      <label for="view">View</label>
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">Quantity</option>
+                        </select>
+                        <div class="custom-arrow"></div>
+                      </div>
+                    </div>
+                    <div class="filter_div sort_list">
+                      <label for="view">By</label>
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">Material Group</option>
+                        </select>
+                        <div class="custom-arrow"></div>
+                      </div>
+                    </div>
+                    <div class="filter_div sort_list">
+                      <label for="view">And</label>
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">Month</option>
+                        </select>
+                        <div class="custom-arrow"></div>
+                      </div>
+                    </div>
+                    <div class="filter_div sort_list">
+                      <label for="view">Graph type</label>
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">Bar Graph</option>
+                        </select>
+                        <div class="custom-icon">
+                          <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="filter_div sort_list">
+                      <label for="view">Operation</label>
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">Sum</option>
+                        </select>
+                        <div class="custom-icon">
+                          <i class="fa-solid fa-bars-staggered"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button class="fBtn" type="button" onclick="showFilter()">
+                      Submit
+                    </button>
+                  </div>
+
+                  <div class="bottom_filter border_bottom">
+                    <div class="w-100 d-flex align-items-center flex-column">
+                      <div class="title align-items-center">
+                        <h5>Advanced Filters</h5>
+                        <i class="fa-solid fa-shuffle"></i>
+                      </div>
+
+                      <div class="filter_div sort_list">
+                        <label for="view">Field</label>
+                        <div class="custom-select">
+                          <select name="view" id="">
+                            <option value="">Net Value</option>
+                          </select>
+                          <div class="custom-arrow"></div>
+                        </div>
+                      </div>
+                      <div class="filter_div sort_list">
+                        <label for="view">Operator</label>
+                        <div class="custom-select">
+                          <select name="view" id="">
+                            <option value="">> (Greater than)</option>
+                            <option value="">< (Less Than)</option>
+                          </select>
+                          <div class="custom-arrow"></div>
+                        </div>
+                      </div>
+                      <div class="filter_div sort_list">
+                        <label for="view">OR Field</label>
+                        <div class="custom-select">
+                          <select name="view" id="">
+                            <option value="">Select Field</option>
+                          </select>
+                          <div class="custom-arrow"></div>
+                        </div>
+                      </div>
+                      <div class="filter_div sort_list">
+                        <label for="view">Connector</label>
+                        <div class="custom-select">
+                          <select name="view" id="">
+                            <option value="">Select Connector</option>
+                          </select>
+                          <div class="custom-arrow"></div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <button
+                          class="fBtn"
+                          type="button"
+                          onclick="toggleCustom()"
+                        >
+                          Add
+                        </button>
+                        <button
+                          class="fBtn"
+                          type="button"
+                          onclick="toggleCustom()"
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    </div>
+
+                    <div id="custom_filter">
+                      <div class="title align-items-center mt-3">
+                        <h5>Custom Filters</h5>
+                      </div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Field</th>
+                            <th scope="col">Operator</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">OR Field</th>
+                            <th scope="col">Connector</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Field 1</td>
+                            <td>Operator 1</td>
+                            <td>Value 1</td>
+                            <td>OR Field 1</td>
+                            <td>Connector 1</td>
+                          </tr>
+                          <tr>
+                            <td>Field 2</td>
+                            <td>Operator 2</td>
+                            <td>Value 2</td>
+                            <td>OR Field 2</td>
+                            <td>Connector 2</td>
+                          </tr>
+                          <tr>
+                            <td>Field 3</td>
+                            <td>Operator 3</td>
+                            <td>Value 3</td>
+                            <td>OR Field 3</td>
+                            <td>Connector 3</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <div class="d-flex justify-content-center">
+                        <button class="fBtn" onclick="showFilter()">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="filter_div sort_list greaterThan">
+                    <label for="view">Quantity</label>
+                    <div class="greater_div">
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">(Greater than)</option>
+                        </select>
+                        <div class="custom-arrow"></div>
+                        <div class="custom-greater">
+                          <i class="fa-solid fa-less-than"></i>
+                        </div>
+                      </div>
+                      <input type="text" class="grt_input" />
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="filter_div sort_list greaterThan">
+                    <label for="view">Profit Percentage</label>
+                    <div class="greater_div">
+                      <div class="custom-select">
+                        <select name="view" id="">
+                          <option value="">(Less than)</option>
+                        </select>
+                        <div class="custom-arrow"></div>
+                        <div class="custom-greater">
+                          <i class="fa-solid fa-greater-than"></i>
+                        </div>
+                      </div>
+                      <input type="text" class="grt_input" />
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="filter_div sort_list">
+                    <label for="view">Custom</label>
+                    <div class="custom-select">
+                      <select name="view" id="">
+                        <option value="">Greater than</option>
+                        <option value="">Less than</option>
+                      </select>
+                      <div class="custom-arrow"></div>
+                    </div>
+                    <div class="operator">
+                      <p>
+                        <i class="fa-solid fa-greater-than"></i>
+                      </p>
+                      <p>
+                        <i class="fa-solid fa-less-than"></i>
+                      </p>
+                      <p>
+                        <i class="fa-solid fa-equals"></i>
+                      </p>
+  
+                      <p>AND</p>
+                      <p>OR</p>
+                    </div>
+                    <div class="custom-select">
+                      <input type="text" />
+                      <div class="custom-arrow"></div>
+                    </div>
+                  </div> -->
+                </div>
+              </form>
+
+              <div class="snapshot">
+                <h5>Snapshot</h5>
+                <div class="snapshot_card_content">
+                  <div class="snapshot_card">
+                    <h4>Title</h4>
+                    <img alt="image" />
+                  </div>
+                  <div class="snapshot_card">
+                    <h4>Title</h4>
+                    <img alt="image" />
+                  </div>
+                  <div class="snapshot_card">
+                    <h4>Title</h4>
+                    <img alt="image" />
+                  </div>
+                  <div class="snapshot_card">
+                    <h4>Title</h4>
+                    <img alt="image" />
+                  </div>
+                  <div class="snapshot_card">
+                    <h4>Title</h4>
+                    <img alt="image" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- ONE DIV -->
+
+              <div class="right_side single_div m-5"></div>
+
+              <!-- TWO DIV -->
+
+              <!-- <div class="right_side double_div">
+                <h4>Sales profit by products per month</h4>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- FOUR DIV -->
+
+              <!-- <div class="right_side four_div">
+                <h4>Sales profit by products per month</h4>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- SIX DIV -->
+
+              <!-- <div class="right_side six_div">
+                <h4>Sales profit by products per month</h4>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+                <div class="two_div fcc">
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                  <div class="graphSection">
+                    <img src="./graph.jpg" alt="image" />
+                  </div>
+                </div>
+              </div> -->
+            </div>
+            <div class="bottom_icons">
+              <div class="refresh">
+                <i class="fa-solid fa-arrow-left-long"> </i>
+              </div>
+              <div class="back">
+                <i class="fa-solid fa-arrow-up-from-bracket back"></i>
+              </div>
+            </div>
+          </section>
+          <!-- <div class="mainDiv section">
+            <div class="p-3">
+              <button class="filterbtn" onclick="openFilter()">Filters</button>
+              <button class="filterbtn" onclick="showSnapshot()">
+                Snapshot
+              </button>
+            </div>
+
+            <div
+              id="main_div"
+              class="p-5 m-4 borderShadow d-flex justify-content-center align-items-center"
+              style="min-height: 300px; background-color: #ffffff"
+            ></div>
+
+            <form
+              class="position-absolute p-3 borderShadow m-2 pb-5 d-flex flex-column justify-content-center align-items-center"
+              style="top: 0; background-color: #e5edff; width: 75%; z-index: 1"
+              id="filterDiv"
+              method="post"
+            >
+              <input type="hidden" name="posttype" value="viewing" />
+              <input type="hidden" name="plot" value="3" />
+              <input type="hidden" name="module" value="sales" />
+              <div class="mt-2 w-100">
+                <h5 class="mb-1">View</h5>
+                <select name="view" id="" class="axis3vals"></select>
+              </div>
+              <div class="m-2 w-100">
+                <h5 class="mb-1">By</h5>
+                <select name="by" id="" class="axis1vals">
+                  <option selected value="" label="">Select Field</option>
+                </select>
+              </div>
+              <div class="mt-2 w-100">
+                <h5 class="mb-1">And</h5>
+                <select name="and" id="" class="axis2vals">
+                  <option selected value="" label="">Select Field</option>
+                </select>
+              </div>
+              <div class="mt-2 w-100">
+                <h5 class="mb-1">Graph type</h5>
+                <select name="graphtype" id="" class="graph_types3"></select>
+              </div>
+              <div class="mt-2 w-100">
+                <h5 class="mb-1">Operation</h5>
+                <select name="operation" class="operations"></select>
+              </div>
+
+              <div
+                class="mt-3 d-flex justify-content-center align-items-center"
+              >
+                <button
+                  class="filterbtn d-flex justify-content-center align-items-center"
+                  type="submit"
+                  id="submitBtn"
+                >
+                  Submit
+                </button>
+              </div>
+
+              <hr style="width: 100%" />
+
+              <div
+                class="d-flex justify-content-between w-100 align-items-center my-3"
+              >
+                <h4 style="font-weight: 700">Advanced Filters</h4>
+                <i class="fa-solid fa-shuffle" style="font-size: 22px"></i>
+              </div>
+
+              <div class="w-100">
+                <div class="mt-2">
+                  <h5 class="mb-1">Field</h5>
+                  <select name="field" id="field" class="field">
+                    <option selected value="" label="">Select Field</option>
+                  </select>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-1">Operator</h5>
+
+                  <select name="operator" id="operator">
+                    <option selected value="" label="">Select Operator</option>
+                    <option value="&lt; (Less than)">&lt; (Less than)</option>
+                    <option value="&gt; (Greater than)">
+                      &gt; (Greater than)
+                    </option>
+                    <option value="= (Equals)">= (Equals)</option>
+                    <option value="!= (Not Equals)">!= (Not Equals)</option>
+                    <option value="~ (Contains)">~ (Contains)</option>
+                  </select>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-1">Value</h5>
+                  <input
+                    type="text"
+                    style="
+                      background-color: lightgray;
+                      width: 100%;
+                      outline: none;
+                      border: none;
+                      padding: 5px 10px;
+                      border-radius: 4px;
+                    "
+                    value=""
+                    id="value"
+                  />
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-1">OR Field</h5>
+                  <select name="or" id="or" class="or">
+                    <option selected value="" label="">Select Field</option>
+                  </select>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-1">Connector</h5>
+                  <select name="connector" id="connector">
+                    <option selected value="" label="">Select Connector</option>
+                    <option value="AND">AND</option>
+                    <option value="OR">OR</option>
+                    <option value="NOT">NOT</option>
+                  </select>
+                </div>
+
+                <div
+                  class="mt-3 d-flex justify-content-center align-items-center"
+                >
+                  <div
+                    class="filterbtn d-flex justify-content-center align-items-center mr-2"
+                    onclick="showcustomfilter()"
+                  >
+                    Add
+                  </div>
+                  <div
+                    class="filterbtn d-flex justify-content-center align-items-center"
+                    onclick="resetCustomFilter()"
+                  >
+                    Reset
+                  </div>
+                </div>
+              </div>
+              <hr style="width: 100%" />
+
+              <div id="custom_filter">
+                <div class="title align-items-center mt-3">
+                  <h5 style="text-align: center; font-weight: 700">
+                    Custom Filters
+                  </h5>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Field</th>
+                      <th scope="col">Operator</th>
+                      <th scope="col">Value</th>
+                      <th scope="col">OR Field</th>
+                      <th scope="col">Connector</th>
+                    </tr>
+                  </thead>
+                  <tbody id="trdata"></tbody>
+                </table>
+
+                <div
+                  class="mt-3 d-flex justify-content-center align-items-center"
+                >
+                  <button
+                    type="submit"
+                    class="filterbtn d-flex justify-content-center align-items-center"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="fa-solid fa-rectangle-xmark position-fixed filterX"
+                onclick="closeFilter()"
+              ></div>
+            </form>
+
+            <div class="snapshot borderShadow">
+              <h4 style="font-weight: 700; text-align: center">Snapshot</h4>
+              <div
+                class="fa-solid fa-rectangle-xmark position-fixed snapshotX"
+                onclick="closeSnapsot()"
+              ></div>
+            </div>
+
+            <div class="d-flex justify-content-end px-5"></div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer"></footer>
+
+    <script>
+      // $("#show_adv").click(() => {
+      //   $(".adv_filter_div").toggleClass("active");
+      // });
+
+      const toggleCustom = () => {
+        $("#custom_filter").addClass("active");
+      };
+
+      function showFilter() {
+        $("#left_side").toggleClass("active");
+        $("#close").toggleClass("active");
+        $(".sidebarLi").toggleClass("active");
+      }
+
+      function showSnapshot() {
+        $(".snapshot").toggleClass("active");
+        $("#close_snapshot").toggleClass("active");
+        $(".sidebarLi").toggleClass("active");
+      }
+    </script>
+
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.4.3.min.js"></script>
+
+    <script src="nstatic/js/main.js"></script>
+  </body>
+</html>

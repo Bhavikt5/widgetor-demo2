@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Widgetor - Projects Detail</title>
+
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/0c4a005ebc.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="nstatic/css/variable.css" />
+    <link rel="stylesheet" href="nstatic/css/style.css" />
+
+    <!-- Jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Bootstarp -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="mainSection">
+      <header id="header"></header>
+      <div class="mainContent">
+        <div id="sidebar"></div>
+
+        <div class="section">
+          <div class="prevNext_div">
+            <div>
+              <a
+                href="#"
+                onclick="history.go(-1)"
+                class="fa-solid fa-circle-arrow-left back_arrow projectPage"
+              ></a>
+              <p>Project name : <span>SAPAPP</span></p>
+            </div>
+
+            <div>
+              <p style="text-align: right">Map Sources & Modules</p>
+
+              <a href="mapdata.html">
+                <i class="fa-solid fa-circle-arrow-right back_arrow"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="pd_data_main">
+            <div>
+              <div class="pd_data">
+                Data source :
+                <span>DS1 (Type: CSV) </span>
+                <i class="fa-solid fa-trash" onclick="confirmDelete()"></i>
+
+                <a
+                  href="#dataworks_form"
+                  class="fa-solid fa-pen-to-square edit_square"
+                  onclick="showDataworksForm()"
+                ></a>
+              </div>
+
+              <div class="pd_data">
+                Data source :
+                <span>DS2 (Type: SQL Server) </span>
+                <i class="fa-solid fa-trash" onclick="confirmDelete()"></i>
+                <a
+                  href="#dataworks_form"
+                  class="fa-solid fa-pen-to-square edit_square"
+                  onclick="showDataworksForm()"
+                ></a>
+              </div>
+            </div>
+
+            <button class="btn signin_btn" onclick="showDataworksForm()">
+              + Add Source
+            </button>
+
+            <form class="dataworks_form" id="dataworks_form" method="POST">
+              <input
+                type="hidden"
+                name="csrfmiddlewaretoken"
+                value="nr91w0sCgsXTEbWw4C3J3hkccySSKSXQ4u2mqhvLCzoS5bjZn72yBoFCkJqP8Dk2"
+              />
+
+              <div class="label mt-4">
+                <label class="required" for="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  maxlength="127"
+                  required
+                  id="id_name"
+                />
+              </div>
+
+              <input type="file" name="docfile" id="id_docfile" />
+
+              <div class="label mt-4">
+                <label for="username">Type</label>
+                <select name="data_source" id="id_data_source">
+                  <option value="CSV">CSV</option>
+
+                  <option value="Excel">Excel</option>
+
+                  <option value="SQL Server">SQL Server</option>
+
+                  <option value="JSON">JSON</option>
+
+                  <option value="SAP">SAP</option>
+
+                  <option value="MySQL">MySQL</option>
+
+                  <option value="Postgresql">Postgresql</option>
+                </select>
+              </div>
+              <div class="label mt-4">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="User Name"
+                  maxlength="127"
+                  id="id_username"
+                />
+              </div>
+
+              <div class="label mt-4">
+                <label for="key">Key</label>
+                <input
+                  type="password"
+                  name="key"
+                  placeholder="Key"
+                  id="id_key"
+                />
+              </div>
+
+              <div class="label mt-4">
+                <label for="connection">Connection string</label>
+                <input
+                  type="text"
+                  name="connection_string"
+                  placeholder="Connection String"
+                  maxlength="1023"
+                  id="id_connection_string"
+                />
+              </div>
+
+              <div class="btn_div">
+                <input type="submit" value="Add" class="btn signin_btn" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer"></footer>
+    <script src="nstatic/js/main.js"></script>
+    <script>
+      function confirmDelete() {
+        confirm("Do you want to delete this project?");
+      }
+
+      function showDataworksForm() {
+        $("#dataworks_form").toggleClass("active");
+        $(".dataworks_title i").toggleClass("fa-plus fa-minus");
+      }
+    </script>
+  </body>
+</html>

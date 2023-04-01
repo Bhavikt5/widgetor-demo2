@@ -1,0 +1,57 @@
+<ul class="sidebar">
+  <li class="sidebar_box">
+    <a href="/projects.html" class="sidebar_title"
+      ><i class="fa-solid fa-diagram-project"></i>projects</a
+    >
+  </li>
+  <li class="sidebar_box">
+    <a href="/exports.html" class="sidebar_title"
+      ><i class="fa-solid fa-file-export"></i>Export</a
+    >
+  </li>
+  <li class="sidebar_box">
+    <a href="/generatedata.html" class="sidebar_title"
+      ><i class="fa-solid fa-database"></i>Generate Data</a
+    >
+  </li>
+  <li class="sidebar_box">
+    <p
+      class="sidebar_title d-flex justify-content-between align-items-center"
+      onclick="showDashboard()"
+    >
+      <span> <i class="fa-solid fa-image"></i> Dashboards </span>
+
+      <i class="fa-solid fa-angle-down"></i>
+    </p>
+    <div id="dashboard">
+      <a href="/sales.html"> sales </a>
+      <a href="/production.html"> production </a>
+      <a href="/inventory.html"> inventory </a>
+      <a href="/finance.html"> finance </a>
+      <a href="/moduleless.html"> module less </a>
+    </div>
+  </li>
+  <li class="sidebar_box">
+    <a href="#" class="sidebar_title">
+      <i class="fa-solid fa-lock"></i>admin
+    </a>
+  </li>
+  <li class="sidebar_box">
+    <a href="/adduser.html" class="sidebar_title">
+      <i class="fa-solid fa-user"></i>add user</a
+    >
+  </li>
+</ul>
+
+<script>
+  $(window)
+    .resize(function () {
+      var width = $(window).width();
+      var mobileScreen = 450;
+
+      if (width <= mobileScreen) {
+        $(".admin").hide();
+      }
+    })
+    .resize();
+</script>

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Assistant:400,700|Playfair+Display:900");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-light: #f7faff;
+  --clr-dark: #333333;
+  --clr-darkSecondary: #333333;
+  --clr-primary: #34122a;
+  --clr-secondary: #c3fcf2;
+  --clr-accent: #ff7750;
+  --clr-lightgray: #e5edff;
+  --clr-white: #ffffff;
+  --foreground: var(--clr-dark);
+  --background: #eeeeee;
+  --lightgray: var(--clr-lightgray);
+  --footerbg: #e4e4e4;
+  --sidebarbg: #f7f7f9;
+  --sidebar-primary: #464545;
+  --logoFilter: brightness(1);
+}
+
+.darkmode {
+  --clr-light: #34122a;
+  --clr-dark: rgb(208, 204, 204);
+  --clr-darkSecondary: #42cf97;
+  --clr-primary: #6b325a;
+  --clr-secondary: #00100d;
+  --clr-accent: #ff7750;
+  --clr-lightgray: #e5edff;
+  --clr-white: rgba(10, 10, 10, 1);
+  --foreground: var(--clr-light);
+  --background: #17181c;
+  --lightgray: var(--clr-lightgray);
+  --footerbg: #212020;
+  --sidebarbg: var(--clr-white);
+  --sidebar-primary: var(--clr-dark);
+  --logoFilter: brightness(2);
+}
