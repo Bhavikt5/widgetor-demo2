@@ -3,11 +3,23 @@ let darkMode = localStorage.getItem("darkMode");
 
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
 
+const lightMode = document.querySelector("#lightlogo");
+const darkedMode = document.querySelector("#darklogo");
+
+const flightMode = document.querySelector("#footerLight");
+const fdarkedMode = document.querySelector("#footerDark");
+
 const enableDarkMode = () => {
   // 1. Add the class to the body
   document.body.classList.add("darkmode");
   // 2. Update darkMode in localStorage
   localStorage.setItem("darkMode", "enabled");
+
+  darkedMode.style.display = "block";
+  lightMode.style.display = "none";
+
+  fdarkedMode.style.display = "block";
+  flightMode.style.display = "none";
 
   darkModeToggle.checked = true;
 };
@@ -18,6 +30,11 @@ const disableDarkMode = () => {
   // 2. Update darkMode in localStorage
   localStorage.setItem("darkMode", null);
 
+  darkedMode.style.display = "none";
+  lightMode.style.display = "block";
+
+  fdarkedMode.style.display = "none";
+  flightMode.style.display = "block";
   darkModeToggle.checked = false;
 };
 
@@ -25,6 +42,8 @@ const disableDarkMode = () => {
 // start things off with it on
 if (darkMode === "enabled") {
   enableDarkMode();
+} else {
+  disableDarkMode();
 }
 
 // When someone clicks the button

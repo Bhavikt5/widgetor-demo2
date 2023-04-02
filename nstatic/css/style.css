@@ -1061,7 +1061,8 @@ hr {
 }
 
 .sales .revenue,
-.sales .quantity {
+.sales .quantity,
+.containers {
   flex: 1;
   background: var(--clr-white);
   border: 0.7px solid rgba(0, 0, 0, 0.1);
@@ -3001,10 +3002,6 @@ tbody > tr > td > select {
 }
 
 @media (max-width: 425px) {
-  .section {
-    padding: 1rem;
-  }
-
   .mainContent {
     min-height: 100vh;
   }
